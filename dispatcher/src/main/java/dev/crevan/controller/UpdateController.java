@@ -43,6 +43,10 @@ public class UpdateController {
         }
     }
 
+    public void setView(final SendMessage sendMessage) {
+        telegramBot.sendAnswerMessage(sendMessage);
+    }
+
     private void distributeMessagesByType(final Update update) {
         var message = update.getMessage();
 
@@ -68,10 +72,6 @@ public class UpdateController {
         var sendMessage = messageUtils.generateSendMessageWithText(update,
                 "Файл получен! Обрабатывается...");
         setView(sendMessage);
-    }
-
-    private void setView(final SendMessage sendMessage) {
-        telegramBot.sendAnswerMessage(sendMessage);
     }
 
     private void processPhotoMessage(final Update update) {
